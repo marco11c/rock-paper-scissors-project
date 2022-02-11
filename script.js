@@ -20,6 +20,7 @@ function computerPlay(){
 
     }
 }
+
 function playRound(playerSelection, computerSelection){
     computerSelection = computerPlay();
     playerSelection = prompt('choose your move!');
@@ -47,6 +48,6 @@ function game(){
     for (let round=0;round<5;round++){
         console.log(playRound(playerSelection, computerSelection));
     }
-console.log(playerScore===computerScore ?  "It's a tie game!!" : playerScore>computerScore ?  "You win the game!!" :  "You loose the game!!");
+    console.log(playerScore===computerScore ?  "It's a tie game!!" : playerScore>computerScore ?  "You win the game!!" :  "You loose the game!!");
 }
 game();
