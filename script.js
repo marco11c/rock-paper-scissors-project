@@ -4,6 +4,11 @@ let playerSelection;
 let playerScore=0;
 let computerScore=0;
 
+let rockButton = document.querySelector(".rock-btn");
+rockButton.addEventListener("click",() => playRound());
+
+
+
 function computerPlay(){
     let selection = Math.floor(Math.random()*3)+1;
 
@@ -23,7 +28,6 @@ function computerPlay(){
 
 function playRound(playerSelection, computerSelection){
     computerSelection = computerPlay();
-    playerSelection = prompt('choose your move!');
     //looks for CASE that is TRUE and returns code in that CASE
     switch(true){
         //If both make same selectin - TIE
@@ -45,9 +49,5 @@ function playRound(playerSelection, computerSelection){
 }
 
 function game(){
-    for (let round=0;round<5;round++){
-        console.log(playRound(playerSelection, computerSelection));
-    }
-    console.log(playerScore===computerScore ?  "It's a tie game!!" : playerScore>computerScore ?  "You win the game!!" :  "You loose the game!!");
+  
 }
-game();
