@@ -1,19 +1,40 @@
 
 let computerSelection;
 let playerSelection;
-let playerScore=0;
-let computerScore=0;
+let playerScore = 0;
+let computerScore = 0;
+let roundCount = 0;
 let resultBox = document.querySelector(".results");
+let botGraphic = document.querySelector(".bot-graphic");
+let playerGraphic = document.querySelector(".player-graphic");
+let botLabel = document.querySelector(".bot-score");
+let playerLabel = document.querySelector(".player-score");
+let roundLabel = document.querySelector(".round-label");
+let roundMessage = document.querySelector(".round-message");
+let currentPlayerMove = document.querySelector(".current-player-move");
+let currentBotMove = document.querySelector(".current-bot-move");
+let resetButton = document.querySelector(".reset-btn");
+let rock = "✊";
+let paper = "🖐";
+let scissors = "✌️";
+
+ resetButton.addEventListener("click", () => resetGame() );
 
 let rockButton = document.querySelector(".rock-btn");
 rockButton.addEventListener("click",() => playRound("rock", computerSelection));
+rockButton.addEventListener("click", ()=> {playerGraphic.textContent = rock;});
+rockButton.addEventListener("click", ()=> {currentPlayerMove.textContent = "ROCK";});
 
 let paperButton = document.querySelector(".paper-btn");
 paperButton.addEventListener("click", () => playRound("paper", computerSelection));
+paperButton.addEventListener("click", ()=> {playerGraphic.textContent = paper;});
+paperButton.addEventListener("click", ()=> {currentPlayerMove.textContent = "PAPER";});
+
 
 let scissorsButton = document.querySelector(".scissors-btn");
 scissorsButton.addEventListener("click", () => playRound("scissors", computerSelection));
-
+scissorsButton.addEventListener("click", ()=> {playerGraphic.textContent = scissors;});
+scissorsButton.addEventListener("click", ()=> {currentPlayerMove.textContent = "SCISSORS";});
 
 
 function computerPlay(){
@@ -21,12 +42,18 @@ function computerPlay(){
 
     switch (selection) {
         case 1:
+            botGraphic.textContent = rock;
+            currentBotMove.textContent = "ROCK";
             return 'rock';
             break;
         case 2:
+            botGraphic.textContent = paper;
+            currentBotMove.textContent = "PAPER";
             return  'paper';
             break;
         case 3:
+            botGraphic.textContent = scissors;
+            currentBotMove.textContent = "SCISSORS";
             return 'scissors';
             break;
 
@@ -39,21 +66,36 @@ function playRound(playerSelection, computerSelection){
     switch(true){
         //If both make same selectin - TIE
         case playerSelection===computerSelection:
-            console.log("tie");
-            return "It's a tie!";
+            roundMessage.textContent = `TIE!`;
             break;
         //All possible win moves for PLAYER
         case (playerSelection==='rock'&&computerSelection==='scissors')||(playerSelection==='paper'&&computerSelection==='rock')||(playerSelection==='scissors'&&computerSelection==='paper'):
-            playerScore++;
-            console.log("you win!");
-            return `You win! ${playerSelection} beats ${computerSelection}`;
+            ++playerScore;
+            roundMessage.textContent = `YOU WIN! ${playerSelection} beats ${computerSelection}`;
             break;
         //All other possibilities are of computer winning
         default:
-            computerScore++;
-            console.log("you loose!");
-            return `You loose! ${playerSelection} is beaten by ${computerSelection}`;
+            ++computerScore;
+            roundMessage.textContent = `YOU LOSE! ${computerSelection} beats ${playerSelection}`;
             break;
 
     }
+    ++roundCount;
+    roundLabel.textContent = `Round: ${roundCount}`;
+    playerLabel.textContent = `YOU: ${playerScore}`;
+    botLabel.textContent = `CPU: ${computerScore}`;
+}
+
+function resetGame() {
+    roundMessage.textContent = "First to 5 wins!";
+    playerScore = 0;
+    computerScore = 0;
+    roundCount = 0;
+    roundLabel.textContent = `Round: ${roundCount}`;
+    playerLabel.textContent = `YOU: ${playerScore}`;
+    botLabel.textContent = `CPU: ${computerScore}`;
+    currentBotMove.textContent = " ";
+    currentPlayerMove.textContent = " ";
+    botGraphic.textContent = "❔";
+    playerGraphic.textContent = "❔";
 }

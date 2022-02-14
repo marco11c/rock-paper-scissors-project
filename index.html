@@ -4,14 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href="style.css">
     <title>Rock Paper Scissors Project</title>
 </head>
-<body>
-    <button class="btn rock-btn">Rock</button>
-    <button class="btn paper-btn">Paper</button>
-    <button class="btn scissors-btn">Scissors</button>
-    <div class="results"></div>
+<body> 
+<!-- <div class="main-container"> -->
+    <!-- 5 dots displayinh won lost rounds -->
+    <div class="cards-container">
+        <div class="scoreboard card">Scoreboard
+            <div class="score score-label player-score">You: </div>
+            <div class="score score-label bot-score">CPU: </div>
+        </div>
 
+        <div class="roundcard-container card">
+            <div class="roundcard round-label">Round</div>
+            <button class="reset-btn">Reset</button>
+        </div>
+    </div>
+
+    <div class="round-message">First to 5 wins!</div>
+
+<!-- player and bot graphic, name, score -->
+    <div class="middle-container">
+    <!-- player -->
+        <div class="side-side player-container player-side">
+            <div class="labels name player-name">You</div>
+            <div class="graphic player-graphic">❔</div>
+            <div class="labels current-player-move"></div>
+        </div>
+    <!-- bot -->
+        <div class="side-side bot-container bot-side">
+            <div class=" labels name bot-name">CPU</div>
+            <div class="graphic bot-graphic">❔</div>
+            <div class="labels current-bot-move"></div>
+        </div>
+    </div>
+
+
+    <!-- three player buttons RPS -->
+    <div class="buttons-container">
+        <button class="btn rock-btn">✊</button>
+        <button class="btn paper-btn">🖐</button>
+        <button class="btn scissors-btn">✌️</button>
+    </div>
+<!-- </div> -->
+<div id="footer">Marco Cayetano ©</div>
     <script src='script.js'></script>
 </body>
 </html>
