@@ -24,7 +24,7 @@ body{
 
 }
 .modal{
-    background-image: url(/images/sunraysbg.png);
+    background-image: url(images/sunraysbg.png);
     background-position: center center;
     display:none;
     background-color:#5F67EA;
