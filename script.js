@@ -18,17 +18,21 @@ let rock = "✊";
 let paper = "🖐";
 let scissors = "✌️";
 
-let playAgainBtn = document.querySelectror('.modal-btn');
+let playAgainBtn = document.querySelector('.modal-btn');
 let endGameModal = document.querySelector('.modal');
 let modalHeader = document.querySelector('.modal-header');
+let modalMessage = document.querySelector('.modal-message');
+let modalBackdrop = document.querySelector('.modal-backdrop');
+
+playAgainBtn.addEventListener("click", playAgain);
 
 document.addEventListener("touchstart", function() {},false);
 
 
- resetButton.addEventListener("click", () => resetGame() );
+resetButton.addEventListener("click", () => resetGame() );
 
 let rockButton = document.querySelector(".rock-btn");
-rockButton.addEventListener("click",() => playRound("rock", computerSelection));
+rockButton.addEventListener("click",()=> playRound("rock", computerSelection));
 rockButton.addEventListener("click", ()=> {playerGraphic.textContent = rock;});
 rockButton.addEventListener("click", ()=> {currentPlayerMove.textContent = "ROCK";});
 
@@ -39,7 +43,7 @@ paperButton.addEventListener("click", ()=> {currentPlayerMove.textContent = "PAP
 
 
 let scissorsButton = document.querySelector(".scissors-btn");
-scissorsButton.addEventListener("click", () => playRound("scissors", computerSelection));
+scissorsButton.addEventListener("click", ()=> playRound("scissors", computerSelection));
 scissorsButton.addEventListener("click", ()=> {playerGraphic.textContent = scissors;});
 scissorsButton.addEventListener("click", ()=> {currentPlayerMove.textContent = "SCISSORS";});
 
@@ -91,6 +95,9 @@ function playRound(playerSelection, computerSelection){
     roundLabel.textContent = `Round: ${roundCount}`;
     playerLabel.textContent = `YOU: ${playerScore}`;
     botLabel.textContent = `CPU: ${computerScore}`;
+    if(isGameOver()){
+        openModal();
+    }
 }
 
 function resetGame() {
@@ -105,4 +112,27 @@ function resetGame() {
     currentPlayerMove.textContent = " ";
     botGraphic.textContent = "❔";
     playerGraphic.textContent = "❔";
+}
+
+function isGameOver() {
+    return playerScore === 5 || computerScore === 5 ;
+}
+
+function openModal() {
+    endGameModal.style.display = 'block';
+    modalBackdrop.style.display = 'block';
+    if (playerScore === 5){
+        modalHeader.textContent = "GAME OVER!";
+        modalMessage.textContent = `🏆 You Won! ${playerScore}-${computerScore}`;
+    } else if (computerScore === 5){
+        modalHeader.textContent = "GAME OVER";
+        modalMessage.textContent = `You Lose! ${playerScore}-${computerScore}`;
+    }
+
+}
+
+function playAgain() {
+    endGameModal.style.display = 'none';
+    modalBackdrop.style.display = 'none';
+    resetGame();
 }
