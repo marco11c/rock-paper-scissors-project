@@ -18,6 +18,13 @@ let rock = "✊";
 let paper = "🖐";
 let scissors = "✌️";
 
+let playAgainBtn = document.querySelectror('.modal-btn');
+let endGameModal = document.querySelector('.modal');
+let modalHeader = document.querySelector('.modal-header');
+
+document.addEventListener("touchstart", function() {},false);
+
+
  resetButton.addEventListener("click", () => resetGame() );
 
 let rockButton = document.querySelector(".rock-btn");
