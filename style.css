@@ -4,9 +4,10 @@ body{
     font-weight:bold;
     height:90vh;
     /* width: 100vw;  */
+    max-width: 600px;
     color:white;
     background-color: #5F67EA;
-    margin:0px;
+    margin:auto;
     display:flex;
     /* flex-grow:1; */
     flex-direction: column;
